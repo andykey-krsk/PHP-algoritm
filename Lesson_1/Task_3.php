@@ -1,11 +1,18 @@
 <?php
-if ($_GET['path'] != '') {
+
+if (empty($_GET['path'])) {
+    $path = "/";
+} else {
     $path = $_GET['path'];
-}else{
-    $path = '/';
 }
+
 $dir = new DirectoryIterator($path);
 
 foreach ($dir as $item) {
-    echo "<p><a href='/?path=". $item ."'>" . $item . "</a></p>" . PHP_EOL;
+    if ($item->isDir()) {
+        echo "<p>DIR <a href='/?path=" . $item->getPathname() . "'>" . $item . "</a></p>";
+    } else {
+        echo "<p>FILE " . $item->getBasename() . "</p>";
+    }
+
 }

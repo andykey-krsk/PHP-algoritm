@@ -10,7 +10,7 @@ function divider($number)
             }
         }
         if ($i === 2){
-            return "Число простое \n";
+            return "Число простое";
         }
     }
 }
@@ -34,11 +34,19 @@ function isSimple($number)
 
 $number1 = 13195;
 $number2 = 600851475143;
+$number3 = 257;
+$number4 = 514;
 
 echo divider($number1); //29
 echo "\n";
 
 echo divider($number2);
+echo "\n";
+
+echo divider($number3);
+echo "\n";
+
+echo divider($number4);//257
 echo "\n";
 
 echo divider(6857);
