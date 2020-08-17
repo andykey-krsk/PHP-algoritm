@@ -77,9 +77,40 @@ function printMatrix($array)
     }
 }
 
-$x = 10;
+$x = 2;
+$y = 3;
+
+$array = spiralFilling($x, $y);
+printMatrix($array);
+
+echo "<br><br><br>";
+
+$x = 3;
+$y = 1;
+
+$array = spiralFilling($x, $y);
+printMatrix($array);
+
+echo "<br><br><br>";
+
+$x = 4;
+$y = 4;
+
+$array = spiralFilling($x, $y);
+printMatrix($array);
+
+echo "<br><br><br>";
+
+$x = 0;
+$y = 7;
+
+$array = spiralFilling($x, $y);
+printMatrix($array);
+
+echo "<br><br><br>";
+
+$x = 20;
 $y = 20;
 
 $array = spiralFilling($x, $y);
-
 printMatrix($array);
