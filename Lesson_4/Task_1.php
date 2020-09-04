@@ -6,6 +6,7 @@
 Ответ вписать на третью строчку
 */
 
+//генерация случайного числа
 function getBigNumber($capacity)
 {
     $bigNumber = '';
@@ -15,6 +16,7 @@ function getBigNumber($capacity)
     return $bigNumber;
 }
 
+//запись результата в файл
 function putOperand($operand, $value, $filename)
 {
     $file = fopen($filename, "r+");
@@ -35,6 +37,7 @@ function putOperand($operand, $value, $filename)
     }
 }
 
+//считавание операндов
 function getOperand($operand, $filename)
 {
     $file = new SplFileObject($filename);
@@ -44,6 +47,8 @@ function getOperand($operand, $filename)
     }
 }
 
+//эксперимент
+//не придумал как красиво решить проблему с хвостами
 function test($operand, $value, $filename)
 {
     $file = new SplFileObject($filename, 'r+');
@@ -75,26 +80,24 @@ function bigAddition($a, $b)
     }
     $mind = 0;
     $sum = [];
-    for ($i = 0; $i < $len - 1; $i++) {
-        $sum[$i] = (int)$reversed_a[$i] + (int)$reversed_b[$i];
+    for ($i = 0; $i < $len; $i++) {
+        $sum[$i] = (int)$reversed_a[$i] + (int)$reversed_b[$i] + $mind;
         if (strlen($sum[$i]) > $capacity) {
-
+            $mind = 1;
+            $sum[$i] -= pow(10, $capacity);
         }
+        echo $sum[$i] . "\n";
     }
-
+    return $mind . implode('', array_reverse($sum));
 }
 
 $filename = 'chisla.txt';
-putOperand(1, getBigNumber(100), $filename);
-putOperand(2, getBigNumber(100), $filename);
+//putOperand(1, getBigNumber(100), $filename);
+//putOperand(2, getBigNumber(100), $filename);
 
-test(3, '123456', $filename);
+//test(3, '123456', $filename);
 
 $operand1 = getOperand(1, $filename);
 $operand2 = getOperand(2, $filename);
 
-
-bigAddition($operand1, $operand2);
-//echo $operand1;
-//echo $operand2;
-
+putOperand(3, bigAddition($operand1, $operand2), $filename);
