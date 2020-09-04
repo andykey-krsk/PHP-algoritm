@@ -86,7 +86,6 @@ function bigAddition($a, $b)
             $mind = 1;
             $sum[$i] -= pow(10, $capacity);
         }
-        echo $sum[$i] . "\n";
     }
     return $mind . implode('', array_reverse($sum));
 }
