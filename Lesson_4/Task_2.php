@@ -55,12 +55,28 @@ function bigPower($a, $n)
 
 function bigMult($a, $b)
 {
-    $mult = '';
     if ($a == 0 || $b == 0) return 0;
     if ($a == 1) return $b;
     if ($b == 1) return $a;
 
-return $mult;
+    $result = '';
+    //задаем разрядность преобразования
+    $capacity = 1;
+    //преодразуем строку в массив и разворачиваем его
+    $reversed_a = array_reverse(str_split(trim($a), $capacity));
+    $reversed_b = array_reverse(str_split(trim($b), $capacity));
+
+    //узнаем размерность каждого массива
+    $len_a = count($reversed_a);
+    $len_b = count($reversed_b);
+
+    for ($iA = 0; $iA < $len_a; $iA++) {
+        for ($iB = 0; $iB < $len_b; $iB++) {
+            $temp = $reversed_a[$iA] * $reversed_b[$iB];
+        }
+    }
+
+    return $result;
 }
 
 bigMult($a, $n);
