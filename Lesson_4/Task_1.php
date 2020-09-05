@@ -78,21 +78,23 @@ function bigAddition($a, $b)
     } else {
         $len = $len_b;
     }
+
     $mind = 0;
     $sum = [];
     for ($i = 0; $i < $len; $i++) {
-        $sum[$i] = (int)$reversed_a[$i] + (int)$reversed_b[$i] + $mind;
+        $sum[$i] = $reversed_a[$i] + $reversed_b[$i] + $mind;
         if (strlen($sum[$i]) > $capacity) {
             $mind = 1;
             $sum[$i] -= pow(10, $capacity);
         }
+        $sum[$i] = str_pad($sum[$i], $capacity, '0', STR_PAD_LEFT);
     }
     return $mind . implode('', array_reverse($sum));
 }
 
 $filename = 'chisla.txt';
-//putOperand(1, getBigNumber(100), $filename);
-//putOperand(2, getBigNumber(100), $filename);
+//putOperand(1, getBigNumber(100000), $filename);
+//putOperand(2, getBigNumber(100000), $filename);
 
 //test(3, '123456', $filename);
 
