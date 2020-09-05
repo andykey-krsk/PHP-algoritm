@@ -5,8 +5,8 @@
 Ответ вывести в файл otvet.txt
 */
 
-$a = 10;
-$n = 250;
+$a = 9;
+$n = 999;
 $filename = 'otvet.txt';
 
 function putFile($value, $filename)
@@ -16,6 +16,25 @@ function putFile($value, $filename)
         $file->fwrite($value);
     }
 }
+
+function power($a, $n)
+{
+    if ($n == 0) {
+        return 1;
+    }
+
+    if ($n == 1 || $a == 1 || $a == 0) {
+        return $a;
+    }
+    if ($n % 2 == 1) {
+        return $a * bigPower($a, $n - 1);
+    } else {
+        $b = bigPower($a, $n / 2);
+        return $b * $b;
+    }
+}
+
+//putFile(power($a, $n), $filename);
 
 function bigPower($a, $n)
 {
@@ -27,7 +46,11 @@ function bigPower($a, $n)
         return $a;
     }
 
-    return $a * bigPower($a, $n-1);
+    $temp = [];
+
+    for ($i = 0; $i < $n; $i++) {
+
+    }
 }
 
-putFile(bigPower($a, $n), $filename);
+bigPower($a,$n);
