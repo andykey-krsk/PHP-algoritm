@@ -27,9 +27,9 @@ function power($a, $n)
         return $a;
     }
     if ($n % 2 == 1) {
-        return $a * bigPower($a, $n - 1);
+        return $a * power($a, $n - 1);
     } else {
-        $b = bigPower($a, $n / 2);
+        $b = power($a, $n / 2);
         return $b * $b;
     }
 }
@@ -46,11 +46,11 @@ function bigPower($a, $n)
         return $a;
     }
 
-    $temp = [];
-
+    $result = 1;
     for ($i = 0; $i < $n; $i++) {
-
+        $result = bigMult($result, $a);
     }
+    return $result;
 }
 
 function bigMult($a, $b)
